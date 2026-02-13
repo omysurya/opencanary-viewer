@@ -1,7 +1,7 @@
 [Unit]
 Description=OpenCanary Log Viewer - Real-time Web Interface
 After=network.target
-Documentation=https://github.com/omysurya/opencanary-viewer.git
+Docs=https://github.com/omysurya/opencanary-viewer.git
 
 [Service]
 Type=simple
@@ -12,17 +12,17 @@ ExecStart=/opt/opencanary-viewer/opencanary-viewer
 Restart=on-failure
 RestartSec=5s
 
-# Security settings
-NoNewPrivileges=true
-PrivateTmp=true
-ProtectSystem=strict
-ProtectHome=true
-ReadWritePaths=/var/tmp
+# Environment
+Environment="PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 
 # Logging
 StandardOutput=journal
 StandardError=journal
 SyslogIdentifier=opencanary-viewer
+
+# Security (optional - bisa dikomen dulu untuk debug)
+# NoNewPrivileges=true
+# PrivateTmp=true
 
 [Install]
 WantedBy=multi-user.target
